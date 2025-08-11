@@ -1,15 +1,19 @@
 package org.example;
 
 import redis.clients.jedis.Jedis;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
 
-import java.util.ArrayList;
+import java.io.PrintStream;
 import java.util.List;
-import java.util.Set;
 
 public class CityTicketPrices {
     private static final String ZSET_CITIES = "CitiesByTicketPrice";
 
-    public static void main(String[] args) {
+    public static void calculate() {
+
+        // Устанавливаем кодировку UTF-8 для вывода
+        System.setOut(new PrintStream(System.out, true));
         // Connect to Redis
         Jedis jedis = new Jedis("localhost", 6379);
 
@@ -49,5 +53,9 @@ public class CityTicketPrices {
         // Close the Redis connection
         jedis.close();
     }
+
+    //public void calculate() {
+
+    //}
 }
 
